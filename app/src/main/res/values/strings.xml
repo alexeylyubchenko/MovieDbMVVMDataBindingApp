@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MovieDBApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- default Alert Dialog -->
+    <string name="button_alert_dialog_positive_btn">Ok</string>
+    <string name="button_alert_dialog_negative_btn">Cancel</string>
+
+    <string name="similar_title">Similar TV-Shows:</string>
+
+    <string name="permission_rational_text">You need to allow %1$s for correct work of App!</string>
+    <string name="no_internet">No internet connection!</string>
+    <string name="server_error">Something went wrong. Please reload your search!</string>
+    <string name="no_results">No results have been found</string>
+
+    <string name="request_history_menu_title">History</string>
+    <string name="request_history_screen_title">History of Search Requests</string>
+
+    <string name="avg_vote_pfx">Average vote: </string>
+
+    <string name="cancel_text">Cancel</string>
+</resources>

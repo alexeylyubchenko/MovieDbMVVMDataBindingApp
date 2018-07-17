@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+       <import type="android.view.View" />
+
+        <variable name="itemTvShow" type="alexey.moviedbapp.data.viewmodels.items.ItemTvShowViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:paddingLeft="@dimen/blocks_normal_margin"
+        android:paddingRight="@dimen/blocks_normal_margin"
+        android:paddingTop="@dimen/blocks_small_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/itemLlt"
+                android:layout_marginTop="@dimen/blocks_normal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/popular_item_view_height"
+                android:clickable="true"
+                android:elevation="@dimen/tvshow_item_elev"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/item_block_bg_color"
+                app:cardCornerRadius="@dimen/btn_corner_radius"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                android:onClick="@{itemTvShow::onItemClicked}">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/popular_poster_img_size_w"
+                    android:layout_marginLeft="@dimen/blocks_normal_margin"
+                    android:layout_marginRight="@dimen/blocks_normal_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/titleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/blocks_small_margin"
+                        android:paddingBottom="@dimen/blocks_small_margin"
+                        android:textColor="@color/item_title_text_color"
+                        android:textSize="@dimen/title_text_size"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:maxWidth="@dimen/tvshow_max_title_size"
+                        android:text="@{itemTvShow.name}" />
+
+                    <TextView
+                        android:id="@+id/descTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/item_desc_text_color"
+                        android:textSize="@dimen/text_text_size"
+                        android:textStyle="italic"
+                        android:maxLines="4"
+                        android:maxWidth="@dimen/tvshow_max_title_size"
+                        android:text="@{itemTvShow.overview}"/>
+
+                    <LinearLayout
+                        android:id="@+id/voteLlt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:paddingTop="@dimen/blocks_normal_margin"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/item_vote_pfx_text_color"
+                            android:textSize="@dimen/text_text_size"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:text="@string/avg_vote_pfx"
+                            android:maxWidth="@dimen/tvshow_max_title_size" />
+
+                        <TextView
+                            android:id="@+id/voteTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/item_vote_text_color"
+                            android:textSize="@dimen/text_text_size"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:text="@{itemTvShow.vote}"
+                            android:maxWidth="@dimen/tvshow_max_title_size" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/popular_poster_img_size_w"
+                android:layout_height="@dimen/popular_poster_img_size_h"
+                android:layout_marginLeft="@dimen/blocks_small_margin"
+                android:elevation="@dimen/tvshow_item_elev"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="@dimen/btn_corner_radius"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/posterImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    tools:imageUrl="@{itemTvShow.posterUrl}"/>
+
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
+

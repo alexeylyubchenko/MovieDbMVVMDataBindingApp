@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable name="itemTvShowModel" type="alexey.moviedbapp.data.viewmodels.items.ItemTvShowViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/similarItemLayout"
+        android:layout_width="@dimen/similar_poster_img_size_small_w"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/blocks_small_margin"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:onClick="@{itemTvShowModel::onItemClicked}">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="@dimen/similar_poster_img_size_small_w"
+            android:layout_height="@dimen/similar_poster_img_size_small_h"
+            android:id="@+id/similarShowImgHolder"
+            custom:cardCornerRadius="@dimen/сircle_border_radius"
+            android:layout_gravity="center_horizontal"
+            android:innerRadius="0dp"
+            android:shape="rectangle"
+            android:thicknessRatio="1.2">
+
+            <ImageView
+                android:id="@+id/similarShowImg"
+                android:layout_width="@dimen/similar_poster_img_size_small_w"
+                android:layout_height="@dimen/similar_poster_img_size_small_h"
+                android:scaleType="fitXY"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                tools:imageUrl="@{itemTvShowModel.posterUrl}">
+            </ImageView>
+
+        </android.support.v7.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/similarShowNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/item_title_text_color"
+            android:textSize="@dimen/text_text_size"
+            android:gravity="center_horizontal"
+            android:textStyle="normal"
+            android:text="@{itemTvShowModel.name}"
+            android:layout_marginTop="@dimen/blocks_super_small_margin" />
+
+    </LinearLayout>
+
+
+</layout>
+

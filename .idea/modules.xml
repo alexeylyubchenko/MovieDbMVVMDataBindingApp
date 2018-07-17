@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TVShowAppTest_WithSearchView.iml" filepath="$PROJECT_DIR$/TVShowAppTest_WithSearchView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxnetwork/rxnetwork.iml" filepath="$PROJECT_DIR$/rxnetwork/rxnetwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxsearchview/rxsearchview.iml" filepath="$PROJECT_DIR$/rxsearchview/rxsearchview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/storage/storage.iml" filepath="$PROJECT_DIR$/storage/storage.iml" />
+    </modules>
+  </component>
+</project>

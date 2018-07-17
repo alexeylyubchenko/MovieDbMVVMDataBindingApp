@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="alexey.moviedbapp.data.viewmodels.DetailsScreenTvShowsViewModel" />
+
+        <variable
+            name="tvShow"
+            type="alexey.moviedbapp.data.viewmodels.items.ItemTvShowViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/blocks_normal_margin">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="@dimen/blocks_normal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="@dimen/tvshow_item_elev"
+                    app:cardBackgroundColor="@color/item_block_bg_color"
+                    app:cardCornerRadius="@dimen/btn_corner_radius"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/details_poster_img_size_h"
+                        android:layout_marginLeft="@dimen/blocks_normal_margin"
+                        android:layout_marginRight="@dimen/blocks_normal_margin"
+                        android:orientation="vertical">
+
+
+
+                        <TextView
+                            android:id="@+id/details_titleTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/blocks_small_margin"
+                            android:paddingBottom="@dimen/blocks_small_margin"
+                            android:textColor="@color/item_title_text_color"
+                            android:textSize="@dimen/title_text_size"
+                            android:textStyle="bold"
+                            android:text="@{tvShow.name}"
+                            android:maxLines="1" />
+
+                        <TextView
+                            android:id="@+id/details_descTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/item_desc_text_color"
+                            android:textSize="@dimen/text_text_size"
+                            android:text="@{tvShow.overview}"
+                            android:textStyle="italic"/>
+
+                        <LinearLayout
+                            android:id="@+id/voteLlt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:paddingTop="@dimen/blocks_normal_margin"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/item_vote_pfx_text_color"
+                                android:textSize="@dimen/text_text_size"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                android:text="@string/avg_vote_pfx"
+                                android:maxWidth="@dimen/tvshow_max_title_size" />
+
+                            <TextView
+                                android:id="@+id/voteTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/item_vote_text_color"
+                                android:textSize="@dimen/text_text_size"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                android:text="@{tvShow.vote}"
+                                android:maxWidth="@dimen/tvshow_max_title_size" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/similarLlt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="@{viewModel.similarLltVisibility != null ? safeUnbox(viewModel.similarLltVisibility) : View.GONE}"
+                            android:paddingTop="@dimen/blocks_small_margin"
+                            android:paddingBottom="@dimen/blocks_small_margin">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_text_size"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:text="@string/similar_title"
+                                android:padding="@dimen/main_padding" />
+
+                            <android.support.v7.widget.RecyclerView
+                                xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:id="@+id/similarTvShowsRecyclerView"
+                                android:layout_marginTop="@dimen/blocks_small_margin"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="@dimen/details_poster_img_size_w"
+                    android:layout_height="@dimen/details_poster_img_size_h"
+                    android:layout_marginLeft="@dimen/blocks_small_margin"
+                    android:elevation="@dimen/tvshow_item_elev"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/btn_corner_radius"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:id="@+id/details_posterImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        app:imageUrl="@{tvShow.posterUrl}"/>
+
+                </android.support.v7.widget.CardView>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9380b8</color>
+    <color name="colorPrimaryDark">#9380b8</color>
+    <color name="colorAccent">#9380b8</color>
+
+    <color name="main_bg_color">#A1ADE7</color>
+
+    <color name="item_block_bg_color">#fff</color>
+    <color name="item_block_separator_color">#fff</color>
+    <color name="item_title_text_color">#403890</color>
+    <color name="item_desc_text_color">#000</color>
+    <color name="item_vote_pfx_text_color">#45B9D3</color>
+    <color name="item_vote_text_color">#57BB82</color>
+    <color name="item_forks_title_text_color">#000</color>
+    <color name="item_forks_text_color">#fff</color>
+
+    <color name="btn_bg_color">#9380b8</color>
+    <color name="snack_bar_bg_color">#9380b8</color>
+    <color name="searchview_bg_color">#fff</color>
+
+    <color name="item_history_query_bg_color">#9380b8</color>
+    <color name="dialog_bg_color">#ffffff</color>
+</resources>
+

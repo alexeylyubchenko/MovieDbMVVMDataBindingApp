@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "alexey.tvshowapptest"
+        minSdkVersion 21
+        targetSdkVersion 26
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        def versionMain = 1
+        def versionPatch = 0
+        def versionBuild = 1
+
+        versionCode = versionMain * 100 + versionPatch * 10 + versionBuild
+        versionName = "$versionMain.$versionPatch.$versionBuild"
+    }
+
+    def appName = "MovieDBApp"
+
+    buildTypes {
+        release {
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def relativeRootDir = output.packageApplication.outputDirectory.toPath()
+                            .relativize(rootDir.toPath()).toFile()
+                    def buildTypeName = variant.buildType.name
+                    def apkFileName = appName + (buildTypeName.equals("release") ? "" : "_" + buildTypeName) + "_" + versionName + ".apk"
+                    output.outputFileName = new File("$relativeRootDir/release", apkFileName)
+                }
+            }
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    packagingOptions {
+        exclude "META-INF/rxjava.properties"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    //noinspection GradleDependency
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.7.22'
+    testImplementation 'org.mockito:mockito-android:2.7.22'
+    testImplementation 'org.robolectric:robolectric:3.8'
+    //noinspection GradleDependency
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    //noinspection GradleDependency
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    def dagger2 = '2.10-rc2'
+    implementation "com.google.dagger:dagger:${dagger2}"
+    implementation "com.google.dagger:dagger-android:${dagger2}"
+    implementation "com.google.dagger:dagger-android-support:${dagger2}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${dagger2}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${dagger2}"
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    def retrofit2Version = '2.1.0'
+    implementation "com.squareup.retrofit2:retrofit:${retrofit2Version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava:${retrofit2Version}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofit2Version}"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    compileOnly 'org.projectlombok:lombok:1.16.16'
+    annotationProcessor "org.projectlombok:lombok:1.16.16"
+    implementation 'com.google.code.gson:gson:2.8.0'
+    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation project(':rxnetwork')
+    implementation project(':storage')
+    implementation project(':rxsearchview')
+}
